@@ -1,13 +1,13 @@
 ## GeoLocation
 
----
-
 #### Steps for Running this Repository
 
 1. git clone this repo.
 2. For installing dependencies - `npm install`
 3. Before running server setup/create your `.env` file ,it has keys as [`API_KEY`,`HOST`,`PORT`]
 4. To run the server enter - `node server.js`
+
+---
 
 #### For Unit Testing
 
@@ -16,6 +16,8 @@
 #### For Taking inputs from File
 
 1. Go to `input.txt` and enter the List of Cities(one on each line) whose Location you want to get.
+
+---
 
 #### API REQUESTS
 
