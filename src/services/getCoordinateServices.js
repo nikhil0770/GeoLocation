@@ -21,24 +21,23 @@ const getCoordinates = async (req, res) => {
         longitude: cacheValue.longitude,
       });
     } else {
-      try {
-        const response = await axios.get(
-          "https://maps.googleapis.com/maps/api/geocode/json",
-          {
-            params: {
-              address,
-              key,
-            },
-          }
-        );
-        const latitude = response.data.results[0].geometry.location.lat;
-        const longitude = response.data.results[0].geometry.location.lng;
-        const cacheValue = { latitude, longitude };
-        cache.set(address, cacheValue);
-        res.status(200).json({ latitude, longitude });
-      } catch (error) {
-        res.status(400).json({ error: "Invalid Credentials/Parameters" });
+      const response = await axios.get(
+        "https://maps.googleapis.com/maps/api/geocode/json",
+        {
+          params: {
+            address,
+            key,
+          },
+        }
+      );
+      if (!response.data.results[0]) {
+        throw new Error("Invalid API Key/Parameters");
       }
+      const latitude = response.data.results[0].geometry.location.lat;
+      const longitude = response.data.results[0].geometry.location.lng;
+      const cacheValue = { latitude, longitude };
+      cache.set(address, cacheValue);
+      res.status(200).json({ latitude, longitude });
     }
   } catch (err) {
     // console.log(err);
