@@ -2,6 +2,7 @@ const { config } = require("../src/utils/config");
 const { fetchLocationDetails } = require("./utils/geoCodeApiUtils");
 
 describe("GeoCode Api", () => {
+  //making a network request with params having valid values
   test("with all params", async () => {
     try {
       const response = await fetchLocationDetails(config.API_KEY, "Bombay");
@@ -15,15 +16,17 @@ describe("GeoCode Api", () => {
     }
   });
 
+  //making a network request with params having values but are not valid
   test("with all params but invalid values", async () => {
     try {
       const response = await fetchLocationDetails("random_key", "random_city");
-      expect(response.error).toBe("Invalid API Key/Parameters");
+      expect(response.data.error).toBe("Invalid API Key or Invalid Location");
     } catch (error) {
       console.error(error);
     }
   });
 
+  //network request with only key
   test("with only key", async () => {
     try {
       const response = await fetchLocationDetails(config.API_KEY, undefined);
@@ -33,6 +36,7 @@ describe("GeoCode Api", () => {
     }
   });
 
+  //network request with only address
   test("with only address", async () => {
     try {
       const response = await fetchLocationDetails(undefined, "Bombay");

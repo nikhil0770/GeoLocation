@@ -2,10 +2,10 @@ const fs = require("fs");
 const path = require("path");
 
 const writeLocationDetails = async (data) => {
+  //writing data to output.txt
   try {
     const pathToFile = path.resolve(__dirname, "../../output.txt");
-    const locationData = data.latitude + "," + data.longitude;
-    await fs.appendFileSync(pathToFile, locationData + "\n");
+    await fs.appendFileSync(pathToFile, data + "\n");
   } catch (error) {
     return { error: error.message };
   }

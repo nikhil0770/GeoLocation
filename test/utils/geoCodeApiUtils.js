@@ -2,6 +2,7 @@ const axios = require("axios");
 const { config } = require("../../src/utils/config");
 
 const fetchLocationDetails = async (key, address) => {
+  //making a path for network request based on available params
   try {
     let path = "/api/geoCode";
     if (address && key) {
