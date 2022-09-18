@@ -14,7 +14,7 @@ const fetchLocationDetails = async (key, address) => {
     const response = await axios.get(`${config.HOST}${path}`);
     return response;
   } catch (error) {
-    return { error: error.message };
+    return { error: error.response.data.error };
   }
 };
 

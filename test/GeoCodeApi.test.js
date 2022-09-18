@@ -15,19 +15,28 @@ describe("GeoCode Api", () => {
     }
   });
 
+  test("with all params but invalid values", async () => {
+    try {
+      const response = await fetchLocationDetails("random_key", "random_city");
+      expect(response.error).toBe("Invalid Credentials/Parameters");
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
   test("with only key", async () => {
     try {
       const response = await fetchLocationDetails(config.API_KEY, undefined);
-      expect(response.data.error).toBe("Address not present");
+      expect(response.error).toBe("Address not present");
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   });
 
   test("with only address", async () => {
     try {
       const response = await fetchLocationDetails(undefined, "Bombay");
-      expect(response.data.error).toBe("No API Key Present");
+      expect(response.error).toBe("No API Key Present");
     } catch (error) {
       console.log(error);
     }

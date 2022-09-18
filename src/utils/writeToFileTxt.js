@@ -7,7 +7,7 @@ const writeLocationDetails = async (data) => {
     const locationData = data.latitude + "," + data.longitude;
     await fs.appendFileSync(pathToFile, locationData + "\n");
   } catch (error) {
-    res.json({ error: error.message });
+    return { error: error.message };
   }
 };
 

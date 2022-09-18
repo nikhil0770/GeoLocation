@@ -24,7 +24,7 @@ const readFileFromTxt = async () => {
 
     lines.close();
   } catch (err) {
-    res.json({ error: err.message });
+    return { error: err.message };
   }
 };
 
