@@ -13,6 +13,8 @@
 
 1. Run - `npm run test`
 
+---
+
 #### For Taking inputs from File
 
 1. Go to `input.txt` and enter the List of Cities(one on each line) whose Location you want to get.
