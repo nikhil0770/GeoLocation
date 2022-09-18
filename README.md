@@ -18,6 +18,7 @@
 #### For Taking inputs from File
 
 1. Go to `input.txt` and enter the List of Cities(one on each line) whose Location you want to get.
+2. Output of the result will be stored in `output.txt`
 
 ---
 
