@@ -6,7 +6,7 @@
 
 1. git clone this repo.
 2. For installing dependencies - `npm install`
-3. Before running server setup/create your `.env` file ,it has keys as ['API_KEY','HOST','PORT']
+3. Before running server setup/create your `.env` file ,it has keys as [`API_KEY`,`HOST`,`PORT`]
 4. To run the server enter - `node server.js`
 
 #### For Unit Testing
