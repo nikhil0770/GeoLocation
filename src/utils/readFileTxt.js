@@ -22,16 +22,13 @@ const readFileFromTxt = async () => {
         `${config.HOST}/api/geoCode?address=${line}&key=${config.API_KEY}`
       );
       //writing the fetched results into output.txt
-      console.log(response.data);
-      const data = response.data.error
-        ? "Invalid API Key or Invalid Location"
-        : response.data.latitude + "," + response.data.longitude;
+      const data = response.data.latitude + "," + response.data.longitude;
       await writeLocationDetails(data);
     }
 
     lines.close();
   } catch (err) {
-    return { error: err.message };
+    return { error: err.response.data.error.message };
   }
 };
 

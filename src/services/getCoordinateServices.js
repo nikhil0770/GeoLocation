@@ -35,7 +35,7 @@ const getCoordinates = async (req, res) => {
       );
       //if either key/address is invalid returns a error message as response
       if (!response.data.results[0]) {
-        return res.json({ error: "Invalid API Key or Invalid Location" });
+        throw new Error("Invalid API Key or Invalid Location");
       }
       const latitude = response.data.results[0].geometry.location.lat;
       const longitude = response.data.results[0].geometry.location.lng;

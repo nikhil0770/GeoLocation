@@ -20,9 +20,9 @@ describe("GeoCode Api", () => {
   test("with all params but invalid values", async () => {
     try {
       const response = await fetchLocationDetails("random_key", "random_city");
-      expect(response.data.error).toBe("Invalid API Key or Invalid Location");
+      expect(response.error).toBe("Invalid API Key or Invalid Location");
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   });
 
